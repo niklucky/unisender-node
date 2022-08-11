@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Unisender SDK (TypeScript)",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:niklucky/unisender-node-sdk.git",
   "author": "Nik <iam@niklucky.com>",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "fix": "gts fix",
     "prepare": "yarn run compile",
     "pretest": "yarn run compile",
-    "posttest": "yarn run lint"
+    "posttest": "yarn run lint",
+    "prepublish": "yarn run compile"
   }
 }
