@@ -1,24 +1,25 @@
-import { APIOptions, CreateListPayload, ImportContacts, ImportContactsResponse, List } from "./types"
+import { APIOptions, CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./types"
 import UnisenderBase from "./UnisenderBase"
+import UnisenderContacts from "./UnisenderContacts"
 
-class Unisender extends UnisenderBase {
+class Unisender {
+  private contacts: UnisenderContacts
 
-  constructor(protected readonly options: APIOptions) {
-    super(options)
+  constructor(options: APIOptions) {
+    this.contacts = new UnisenderContacts(options)
   }
 
   public async getLists() {
-    return await this.request<List[]>('getLists', undefined)
+    return this.contacts.getLists()
   }
   public async createList(payload: CreateListPayload) {
-    return await this.request<{ id: number }>('createList', payload)
+    return this.contacts.createList(payload)
   }
-  public async deleteList(payload: CreateListPayload) {
-    return await this.request<void>('deleteList', payload)
+  public async deleteList(payload: DeleteListPayload) {
+    return this.contacts.deleteList(payload)
   }
-
   public async importContacts(payload: ImportContacts) {
-    return await this.request<ImportContactsResponse>('importContacts', payload)
+    return this.contacts.importContacts(payload)
   }
 }
 
