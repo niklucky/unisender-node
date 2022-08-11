@@ -1,4 +1,4 @@
-import { APIOptions } from ".";
+import { APIOptions } from "./types";
 import { Client, KeyValue, Response } from "./Client";
 
 export default class UnisenderBase {
@@ -12,9 +12,9 @@ export default class UnisenderBase {
   }
 
   protected async request<T>(method: string, params?: KeyValue): Promise<Response<T>> {
-    return this.client.post(this.buildUrl(method), params)
+    return this.client.post(this.buildUrl(method), undefined, params)
   }
-  
+
   private buildUrl(method: string): string {
     return  `https://api.unisender.com/${this.options.lang}/api/${method}?format=json&api_key=${this.options.APIKey}`
   }
