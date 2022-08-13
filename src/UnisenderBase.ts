@@ -1,5 +1,5 @@
 import { APIOptions, UnisenderLang } from "./DTO";
-import { configureClient } from "./Client";
+import { configureClient } from "./client";
 
 const { UNISENDER_API_KEY, UNISENDER_LANG } = process.env
 

@@ -1,4 +1,4 @@
-import { request } from "./Client";
+import { request } from "./client";
 import { CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./DTO";
 
 export default class UnisenderContacts {
