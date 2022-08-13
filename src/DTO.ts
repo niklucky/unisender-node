@@ -1,6 +1,8 @@
 
+export type UnisenderLang = 'ru' | 'en' | 'ua'
+
 export type APIOptions = {
-  lang: 'ru' | 'en' | 'ua',
+  lang: UnisenderLang,
   APIKey: string
 }
 

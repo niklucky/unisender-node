@@ -1,11 +1,10 @@
-import { APIOptions, CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./types"
-import UnisenderBase from "./UnisenderBase"
+import { APIOptions, CreateListPayload, DeleteListPayload, ImportContacts } from "./DTO"
 import UnisenderContacts from "./UnisenderContacts"
 
 class Unisender {
   private contacts: UnisenderContacts
 
-  constructor(options: APIOptions) {
+  constructor(options?: APIOptions) {
     this.contacts = new UnisenderContacts(options)
   }
 

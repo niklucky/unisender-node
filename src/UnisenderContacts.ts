@@ -1,8 +1,8 @@
-import { APIOptions, CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./types";
+import { APIOptions, CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./DTO";
 import UnisenderBase from "./UnisenderBase";
 
 export default class UnisenderContacts extends UnisenderBase {
-  constructor(protected readonly options: APIOptions) {
+  constructor(protected readonly options?: APIOptions) {
     super(options)
   }
   public async getLists() {
