@@ -1,38 +1,33 @@
 import { APIOptions, UnisenderLang } from "./DTO";
-import { Client, KeyValue, Response } from "./Client";
+import { configureClient } from "./Client";
 
 const { UNISENDER_API_KEY, UNISENDER_LANG } = process.env
 
 export default class UnisenderBase {
+  protected options: APIOptions
 
-  protected client: Client
-  protected APIKey: string = ''
-  protected lang: UnisenderLang = 'en'
+  constructor(options?: APIOptions) {
+    this.options = this.validateOptions(options)
 
-  constructor(protected options?: APIOptions) {
-    this.checkOptions()
-
-    this.client = new Client()
+    configureClient(this.options)
   }
 
-  protected async request<T>(method: string, params?: KeyValue): Promise<Response<T>> {
-    return this.client.post(this.buildUrl(method), undefined, params)
-  }
+  private validateOptions(options?: APIOptions): APIOptions {
+    if (!options)
+      options = {
+        apiKey: '',
+        lang: 'en'
+      }
 
-  private buildUrl(method: string): string {
-    return `https://api.unisender.com/${this.lang}/api/${method}?format=json&api_key=${this.APIKey}`
-  }
-  private checkOptions() {
     if (UNISENDER_API_KEY) {
-      this.APIKey = UNISENDER_API_KEY
+      options.apiKey = UNISENDER_API_KEY
     }
     if (UNISENDER_LANG) {
-      this.lang = UNISENDER_LANG as UnisenderLang
+      options.lang = UNISENDER_LANG as UnisenderLang
     }
-    if (this.options !== undefined) {
-      if (this.options.APIKey === '') {
-        throw new Error('API key is empty')
-      }
+    if (options.apiKey === '') {
+      throw new Error('API key is empty')
     }
+    return options
   }
 }

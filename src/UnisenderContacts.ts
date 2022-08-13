@@ -1,20 +1,19 @@
-import { APIOptions, CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./DTO";
-import UnisenderBase from "./UnisenderBase";
+import { request } from "./Client";
+import { CreateListPayload, DeleteListPayload, ImportContacts, ImportContactsResponse, List } from "./DTO";
 
-export default class UnisenderContacts extends UnisenderBase {
-  constructor(protected readonly options?: APIOptions) {
-    super(options)
+export default class UnisenderContacts {
+  constructor() {
   }
   public async getLists() {
-    return await this.request<List[]>('getLists')
+    return await request<List[]>('getLists')
   }
   public async createList(payload: CreateListPayload) {
-    return await this.request<{ id: number }>('createList', payload)
+    return await request<{ id: number }>('createList', payload)
   }
   public async deleteList(payload: DeleteListPayload) {
-    return await this.request<void>('deleteList', payload)
+    return await request<void>('deleteList', payload)
   }
   public async importContacts(payload: ImportContacts) {
-    return await this.request<ImportContactsResponse>('importContacts', payload)
+    return await request<ImportContactsResponse>('importContacts', payload)
   }
 }

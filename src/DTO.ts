@@ -3,7 +3,7 @@ export type UnisenderLang = 'ru' | 'en' | 'ua'
 
 export type APIOptions = {
   lang: UnisenderLang,
-  APIKey: string
+  apiKey: string
 }
 
 export type List = {
