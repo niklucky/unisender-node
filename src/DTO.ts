@@ -16,7 +16,7 @@ export type CreateListPayload = {
   after_subscribe_url?: string
 }
 export type DeleteListPayload = {
-  list_id: string
+  list_id: number
 }
 
 export type ImportContactsData = {

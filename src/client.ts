@@ -1,4 +1,5 @@
 import * as https from 'https'
+import * as qs from 'querystring'
 
 import { APIOptions, UnisenderLang } from './DTO'
 
@@ -18,12 +19,17 @@ const defaultOptions = {
   method: 'POST',
   headers: {
     'Accept': 'application/json',
-    'Content-Type': 'application/json; charset=UTF-8'
+    'Content-Type': 'Content-type: application/x-www-form-urlencoded'
   }
 };
 
-function buildPath(method: string): string {
-  return `/${lang}/api/${method}?format=json&api_key=${apiKey}`
+function buildPath(method: string, data?: KeyValue): string {
+  let url = `/${lang}/api/${method}?format=json&api_key=${apiKey}`
+  if (data) {
+    url += '&' + qs.stringify(data)
+  }
+
+  return url
 }
 
 function debug(...args: any[]) {
@@ -39,9 +45,9 @@ export async function request<T>(method: string, data?: KeyValue, headers?: KeyV
   return new Promise((resolve, reject) => {
     const options: https.RequestOptions = {
       ...defaultOptions,
-      path: buildPath(method),
-      
+      path: buildPath(method, data),
     }
+    debug('options', options);
     const req = https.request(options, (res) => {
       debug('res.statusCode', res.statusCode);
       if (res.statusCode !== 200) {
@@ -49,20 +55,18 @@ export async function request<T>(method: string, data?: KeyValue, headers?: KeyV
         res.resume();
         return;
       }
-    
+
       let data = '';
-    
+
       res.on('data', (chunk) => {
         data += chunk;
       });
-    
+
       res.on('close', () => {
         resolve(JSON.parse(data))
       });
     });
-    if (data) {
-      req.write(JSON.stringify(data));
-    }
+
     req.end();
 
     req.on('error', (err: Error) => {
