@@ -1,3 +1,4 @@
+import { KeyValue } from "./client"
 
 export type UnisenderLang = 'ru' | 'en' | 'ua'
 
@@ -14,6 +15,9 @@ export type CreateListPayload = {
   title: string
   before_subscribe_url?: string
   after_subscribe_url?: string
+}
+export type UpdateListPayload = CreateListPayload & {
+  list_id: List['id']
 }
 export type DeleteListPayload = {
   list_id: number
@@ -62,4 +66,17 @@ export type ImportContactsResponseLog	 = {
   index: number	// Целое десятичное неотрицательное число — номер контакта в массиве data.
   code: string	// Код ошибки или предупреждения
   message: string //	Сообщение об ошибке/предупреждении.  
+}
+
+export type ExcludePayload = {
+  contact_type: 'email' | 'phone'
+  contact: string
+  list_ids?: string | number[]
+}
+export type SubscribePayload = {
+  list_ids: string | number[]
+  fields: KeyValue
+  tags?: string[] | string
+  double_optin?: 0 | 3 | 4
+  overwrite?: 0 | 1 | 2 
 }

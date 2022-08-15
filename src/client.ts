@@ -1,5 +1,5 @@
 import * as https from 'https'
-import * as qs from 'querystring'
+import * as qs from 'qs'
 
 import { APIOptions, UnisenderLang } from './DTO'
 
@@ -47,6 +47,7 @@ export async function request<T>(method: string, data?: KeyValue, headers?: KeyV
       ...defaultOptions,
       path: buildPath(method, data),
     }
+    console.log('data', data);
     debug('options', options);
     const req = https.request(options, (res) => {
       debug('res.statusCode', res.statusCode);

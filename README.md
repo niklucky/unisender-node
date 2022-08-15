@@ -57,18 +57,18 @@ const sdk = new Unisender()
 
 | Method | Status |
 |--------|--------|
-| createList  | ✅  | 
-| deleteList  | ✅  |
-| exclude | 🚧  |
-| exportContacts  | 🚧  |
-| getContactCount | 🚧  |
 | getLists  | ✅ |
-| getTotalContactsCount | 🚧  |
+| createList  | ✅  | 
+| updateList  | ✅  |
+| deleteList  | ✅  |
+| subscribe | ✅ |
+| unsubscribe | ✅  |
+| exclude | ✅  |
 | importContacts  | 🚧  |
-| subscribe | 🚧  |
-| unsubscribe | 🚧  |
-| updateList  | 🚧  |
+| exportContacts  | 🚧  |
 | getContact  | 🚧  |
+| getContactCount | 🚧  |
+| getTotalContactsCount | 🚧  |
 | isContactInLists  | 🚧  |
 
 ## Messaging
