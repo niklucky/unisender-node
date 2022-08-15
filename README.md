@@ -88,13 +88,15 @@ const result = await sdk.importContacts({
 | subscribe | ✅ |
 | unsubscribe | ✅  |
 | exclude | ✅  |
-| importContacts  | 🚧  |
+| importContacts  | ✅   |
+| importContactsBatch *  | ✅  |
 | exportContacts  | 🚧  |
 | getContact  | 🚧  |
 | getContactCount | 🚧  |
 | getTotalContactsCount | 🚧  |
 | isContactInLists  | 🚧  |
 
+* `importContactsBatch` - simple helper will divide importContacts in chunks with 500 items. Will return array of results of importContacts
 ## Messaging
 | Method | Status |
 |--------|--------|

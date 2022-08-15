@@ -50,5 +50,39 @@ export default class UnisenderContacts {
     })
     return await request<ImportContactsResponse>('importContacts', payload)
   }
+  public async importContactsBatch(payload: ImportContacts) {
+    if (!payload.field_names) {
+      payload.field_names = Object.keys(payload.data[0])
+    }
+    payload.data = payload.data.map(item => {
+      if (Array.isArray(item)) {
+        return item
+      }
+      return Object.values(item)
+    })
+    const len = payload.data.length
+    let chunk: any = []
+    let results = []
+    const chunkPayload = {
+      field_names: payload.field_names,
+      overwrite_tags: payload.overwrite_tags,
+      overwrite_lists: payload.overwrite_lists,
+      data: []
+    }
+    for (let i = 0; i < len; i++) {
+      if (i % 500 === 0) {
+        chunkPayload.data = chunk
+        const result = await request<ImportContactsResponse>('importContacts', chunkPayload)
+        results.push(result)
+        chunk = []
+      }
+      chunk.push(payload.data[i])
+    }
+    chunkPayload.data = chunk
+    const result = await request<ImportContactsResponse>('importContacts', chunkPayload)
+    results.push(result)
+
+    return results 
+  }
 
 }
