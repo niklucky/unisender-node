@@ -51,6 +51,30 @@ import Unisender from 'unisender-node-sdk'
 const sdk = new Unisender()
 ```
 
+## Examples
+
+### Import contacts
+
+```javascript
+
+// Two ways to pass data
+// 1. Unisender way - CSV-style array of arrays with field_names
+const result = await sdk.importContacts({
+    field_names: ['email', 'Name'],
+    data: [
+      ['test1@example.com', 'Test name'],
+      ['test2@example.com', 'Test name2']
+    ]
+  })
+// 2. Simple object
+const result = await sdk.importContacts({
+  data: [
+    { email: 'test1@example.com', Name: 'Test name' },
+    { email: 'test2@example.com', Name: 'Test2 name' },
+  ]
+})
+```
+
 ## Implementation progress
 
 ## Contacts

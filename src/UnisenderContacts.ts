@@ -39,6 +39,15 @@ export default class UnisenderContacts {
     return await request<void>('exclude', payload)
   }
   public async importContacts(payload: ImportContacts) {
+    if (!payload.field_names) {
+      payload.field_names = Object.keys(payload.data[0])
+    }
+    payload.data = payload.data.map(item => {
+      if (Array.isArray(item)) {
+        return item
+      }
+      return Object.values(item)
+    })
     return await request<ImportContactsResponse>('importContacts', payload)
   }
 

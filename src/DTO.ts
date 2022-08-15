@@ -45,7 +45,8 @@ export type ImportContactsData = {
   phone_excluded_list_ids?: number[] | string
 }
 export type ImportContacts = {
-  data: ImportContactsData[]
+  data: (ImportContactsData & Record<string, any>)[] | any[][]
+  field_names?: string[]
   overwrite_tags?: 0 | 1
   overwrite_lists?: 0 | 1
 }
