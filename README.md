@@ -92,8 +92,8 @@ const result = await sdk.importContacts({
 | importContactsBatch *  | ✅  |
 | exportContacts  | ✅ |
 | getTaskResult  | ✅  |
-| getContact  | 🚧  |
-| getContactCount | 🚧  |
+| getContact  | ✅  |
+| getContactCount | ✅ |
 | getTotalContactsCount | 🚧  |
 | isContactInLists  | 🚧  |
 
