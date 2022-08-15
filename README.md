@@ -94,7 +94,7 @@ const result = await sdk.importContacts({
 | getTaskResult  | ✅  |
 | getContact  | ✅  |
 | getContactCount | ✅ |
-| getTotalContactsCount | 🚧  |
+| getTotalContactsCount | ✅ |
 | isContactInLists  | 🚧  |
 
 * `importContactsBatch` - simple helper will divide importContacts in chunks with 500 items. Will return array of results of importContacts

@@ -173,3 +173,7 @@ export type ContactCount = {
   }
   count: string
 }
+
+export type GetTotalContactsCount = {
+  login: string
+}
