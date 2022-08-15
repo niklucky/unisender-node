@@ -177,3 +177,9 @@ export type ContactCount = {
 export type GetTotalContactsCount = {
   login: string
 }
+
+export type IsContactInLists = {
+  email: string
+  list_ids: string | number[]
+  condition: 'and' | 'or'
+}

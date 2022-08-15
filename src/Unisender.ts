@@ -1,4 +1,4 @@
-import { APIOptions, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, SubscribePayload, UpdateListPayload } from "./DTO"
+import { APIOptions, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, IsContactInLists, SubscribePayload, UpdateListPayload } from "./DTO"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
 
@@ -52,6 +52,9 @@ class Unisender extends UnisenderBase {
   }
   public async getTotalContactsCount(payload: GetTotalContactsCount) {
     return this.contacts.getTotalContactsCount(payload)
+  }
+  public async isContactInLists(payload: IsContactInLists) {
+    return this.contacts.isContactInLists(payload)
   }
 }
 

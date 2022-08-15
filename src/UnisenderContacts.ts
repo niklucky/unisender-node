@@ -1,6 +1,6 @@
 import * as qs from 'qs'
 import { request } from "./client";
-import { Contact, ContactCount, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, ExportContactsResponse, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, ImportContactsResponse, List, SubscribePayload, UpdateListPayload } from "./DTO";
+import { Contact, ContactCount, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, ExportContactsResponse, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, ImportContactsResponse, IsContactInLists, List, SubscribePayload, UpdateListPayload } from "./DTO";
 import { stringifyArray } from "./utils";
 
 export default class UnisenderContacts {
@@ -98,5 +98,11 @@ export default class UnisenderContacts {
   }
   public async getTotalContactsCount(payload: GetTotalContactsCount) {
     return await request<{ total: number }>('getTotalContactsCount', payload)
+  }
+  public async isContactInLists(payload: IsContactInLists) {
+    if (payload.list_ids)
+      payload.list_ids = stringifyArray(payload.list_ids)
+
+    return await request<boolean>('isContactInLists', payload)
   }
 }
