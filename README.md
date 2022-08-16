@@ -108,9 +108,9 @@ const result = await sdk.importContacts({
 | sendTestEmail | ✅ |
 | sendEmail | ✅ |
 | checkEmail | ✅ |
-| createSmsMessage | 🚧 |
-| sendSms | 🚧 |
-| checkSms | 🚧 |
+| createSmsMessage | ✅ |
+| sendSms | ✅ |
+| checkSms | ✅ |
 | createCampaign | 🚧 |
 | cancelCampaign | 🚧 |
 | getWebVersion | 🚧 |

@@ -1,5 +1,5 @@
 import { request } from "./client";
-import { CheckEmail, CheckEmailResult, CreateEmailMessage, DeleteMessage, GetActualMessageVersion, SendEmail, SendTestEmail, UpdateEmailMessage } from "./DTO";
+import { CheckEmail, CheckEmailResult, CheckSms, CheckSmsResult, CreateEmailMessage, CreateSmsMessage, DeleteMessage, GetActualMessageVersion, SendEmail, SendSms, SendSmsResult, SendTestEmail, UpdateEmailMessage } from "./DTO";
 import { stringifyArray } from "./utils";
 
 export default class UnisenderMessaging {
@@ -27,5 +27,14 @@ export default class UnisenderMessaging {
   public async checkEmail(payload: CheckEmail) {
     payload.email_id = stringifyArray(payload.email_id)
     return await request<CheckEmailResult>('checkEmail', payload)
+  }
+  public async createSmsMessage(payload: CreateSmsMessage) {
+    return await request<{ message_id: number }>('createSmsMessage', payload)
+  }
+  public async sendSms(payload: SendSms) {
+    return await request<SendSmsResult>('sendSms', payload)
+  }
+  public async checkSms(payload: CheckSms) {
+    return await request<CheckSmsResult>('checkSms', payload)
   }
 }
