@@ -104,10 +104,10 @@ const result = await sdk.importContacts({
 | createEmailMessage | ✅ |
 | updateEmailMessage | ✅ |
 | deleteMessage | ✅ |
-| getActualMessageVersion | 🚧 |
-| sendTestEmail | 🚧 |
-| sendEmail | 🚧 |
-| checkEmail | 🚧 |
+| getActualMessageVersion | ✅ |
+| sendTestEmail | ✅ |
+| sendEmail | ✅ |
+| checkEmail | ✅ |
 | createSmsMessage | 🚧 |
 | sendSms | 🚧 |
 | checkSms | 🚧 |

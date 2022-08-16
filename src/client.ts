@@ -8,6 +8,8 @@ export type Response<T> = {
   result?: T
   error?: string
   code?: string
+  message?: string
+  failed_email_id?: KeyValue[]
 }
 
 let lang: UnisenderLang = 'en'
