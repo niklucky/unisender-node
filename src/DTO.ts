@@ -212,3 +212,7 @@ export type UpdateEmailMessage = {
   lang?: string
   categories?: string
 }
+
+export type DeleteMessage = {
+  message_id: number
+}
