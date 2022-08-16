@@ -1,5 +1,5 @@
 import { request } from "./client";
-import { CancelCampaign, CheckEmail, CheckEmailResult, CheckSms, CheckSmsResult, CreateCampaign, CreateCampaignResult, CreateEmailMessage, CreateSmsMessage, DeleteMessage, GetActualMessageVersion, GetWebVersion, GetWebVersionResult, SendEmail, SendSms, SendSmsResult, SendTestEmail, UpdateEmailMessage } from "./DTO";
+import { CancelCampaign, CheckEmail, CheckEmailResult, CheckSms, CheckSmsResult, CreateCampaign, CreateCampaignResult, CreateEmailMessage, CreateSmsMessage, DeleteMessage, GetActualMessageVersion, GetSenderDomainList, GetSenderDomainListResult, GetWebVersion, GetWebVersionResult, SendEmail, SendSms, SendSmsResult, SendTestEmail, UpdateEmailMessage, UpdateOptInEmail } from "./DTO";
 import { stringifyArray } from "./utils";
 
 export default class UnisenderMessaging {
@@ -48,5 +48,11 @@ export default class UnisenderMessaging {
   }
   public async getWebVersion(payload: GetWebVersion) {
     return await request<GetWebVersionResult>('getWebVersion', payload)
+  }
+  public async updateOptInEmail(payload: UpdateOptInEmail) {
+    return await request<void>('updateOptInEmail', payload)
+  }
+  public async getSenderDomainList(payload: GetSenderDomainList) {
+    return await request<GetSenderDomainListResult[]>('getSenderDomainList', payload)
   }
 }

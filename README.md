@@ -114,8 +114,8 @@ const result = await sdk.importContacts({
 | createCampaign | ✅ |
 | cancelCampaign | ✅ |
 | getWebVersion | ✅ |
-| updateOptInEmail | 🚧 |
-| getSenderDomainList | 🚧 |
+| updateOptInEmail | ✅  |
+| getSenderDomainList | ✅  |
 
 ## Statistics
 | Method | Status |

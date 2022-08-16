@@ -1,4 +1,12 @@
-import { APIOptions, CreateEmailMessage, CreateListPayload, DeleteMessage, DeleteListPayload, ExcludePayload, ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, IsContactInLists, SubscribePayload, UpdateEmailMessage, UpdateListPayload, GetActualMessageVersion, SendTestEmail, SendEmail, CheckEmail, CreateSmsMessage, SendSms, CheckSms, CreateCampaign, CancelCampaign, GetWebVersion } from "./DTO"
+import {
+  APIOptions, CreateEmailMessage, CreateListPayload, DeleteMessage, DeleteListPayload, ExcludePayload,
+  ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, 
+  IsContactInLists, SubscribePayload, UpdateEmailMessage, UpdateListPayload, GetActualMessageVersion, 
+  SendTestEmail, SendEmail, CheckEmail, CreateSmsMessage, SendSms, CheckSms, CreateCampaign, CancelCampaign, 
+  GetWebVersion, 
+  UpdateOptInEmail,
+  GetSenderDomainList
+} from "./DTO"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
 import UnisenderMessaging from "./UnisenderMessaging"
@@ -100,6 +108,12 @@ class Unisender extends UnisenderBase {
   }
   public async getWebVersion(payload: GetWebVersion) {
     return this.messaging.getWebVersion(payload);
+  }
+  public async updateOptInEmail(payload: UpdateOptInEmail) {
+    return this.messaging.updateOptInEmail(payload);
+  }
+  public async getSenderDomainList(payload: GetSenderDomainList) {
+    return this.messaging.getSenderDomainList(payload);
   }
 }
 
