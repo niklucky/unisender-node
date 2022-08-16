@@ -101,19 +101,19 @@ const result = await sdk.importContacts({
 ## Messaging
 | Method | Status |
 |--------|--------|
-| cancelCampaign | 🚧 |
-| checkEmail | 🚧 |
-| checkSms | 🚧 |
-| createCampaign | 🚧 |
-| createEmailMessage | 🚧 |
-| createSmsMessage | 🚧 |
+| createEmailMessage | ✅ |
+| updateEmailMessage | 🚧 |
 | deleteMessage | 🚧 |
 | getActualMessageVersion | 🚧 |
-| getWebVersion | 🚧 |
-| sendEmail | 🚧 |
-| sendSms | 🚧 |
 | sendTestEmail | 🚧 |
-| updateEmailMessage | 🚧 |
+| sendEmail | 🚧 |
+| checkEmail | 🚧 |
+| createSmsMessage | 🚧 |
+| sendSms | 🚧 |
+| checkSms | 🚧 |
+| createCampaign | 🚧 |
+| cancelCampaign | 🚧 |
+| getWebVersion | 🚧 |
 | updateOptInEmail | 🚧 |
 | getSenderDomainList | 🚧 |
 

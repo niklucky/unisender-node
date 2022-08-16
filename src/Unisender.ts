@@ -1,14 +1,17 @@
-import { APIOptions, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, IsContactInLists, SubscribePayload, UpdateListPayload } from "./DTO"
+import { APIOptions, CreateEmailMessage, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, IsContactInLists, SubscribePayload, UpdateListPayload } from "./DTO"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
+import UnisenderMessaging from "./UnisenderMessaging"
 
 class Unisender extends UnisenderBase {
   private contacts: UnisenderContacts
+  private messaging: UnisenderMessaging
 
   constructor(options?: APIOptions) {
     super(options)
 
     this.contacts = new UnisenderContacts()
+    this.messaging = new UnisenderMessaging()
   }
 
   public async getLists() {
@@ -55,6 +58,12 @@ class Unisender extends UnisenderBase {
   }
   public async isContactInLists(payload: IsContactInLists) {
     return this.contacts.isContactInLists(payload)
+  }
+  /* 
+    Methods for sending messages
+  */
+  public async createEmailMessage(payload: CreateEmailMessage) {
+    return this.messaging.createEmailMessage(payload);
   }
 }
 
