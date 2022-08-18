@@ -120,11 +120,11 @@ const result = await sdk.importContacts({
 ## Statistics
 | Method | Status |
 |--------|--------|
-| getCampaignCommonStats | 🚧 |
-| getCampaignDeliveryStats | 🚧 |
-| getCampaignStatus | 🚧 |
-| getMessages | 🚧 |
-| getVisitedLinks | 🚧 |
+| getCampaignCommonStats | ✅ |
+| getCampaignDeliveryStats | ✅ |
+| getCampaignStatus | ✅ |
+| getMessages | ✅ |
+| getVisitedLinks | ✅|
 | listMessages | 🚧 |
 | getCampaigns | 🚧 |
 | getMessage | 🚧 |

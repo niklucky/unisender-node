@@ -1,25 +1,28 @@
 import {
   APIOptions, CreateEmailMessage, CreateListPayload, DeleteMessage, DeleteListPayload, ExcludePayload,
-  ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, 
-  IsContactInLists, SubscribePayload, UpdateEmailMessage, UpdateListPayload, GetActualMessageVersion, 
-  SendTestEmail, SendEmail, CheckEmail, CreateSmsMessage, SendSms, CheckSms, CreateCampaign, CancelCampaign, 
-  GetWebVersion, 
+  ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts,
+  IsContactInLists, SubscribePayload, UpdateEmailMessage, UpdateListPayload, GetActualMessageVersion,
+  SendTestEmail, SendEmail, CheckEmail, CreateSmsMessage, SendSms, CheckSms, CreateCampaign, CancelCampaign,
+  GetWebVersion,
   UpdateOptInEmail,
   GetSenderDomainList
 } from "./DTO"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
 import UnisenderMessaging from "./UnisenderMessaging"
+import UnisenderStat, { CampaignInput, GetCampaignDeliveryStats, GetMessages, GetVisitedLinks } from "./UnisenderStat"
 
 class Unisender extends UnisenderBase {
   private contacts: UnisenderContacts
   private messaging: UnisenderMessaging
+  private stat: UnisenderStat
 
   constructor(options?: APIOptions) {
     super(options)
 
     this.contacts = new UnisenderContacts()
     this.messaging = new UnisenderMessaging()
+    this.stat = new UnisenderStat()
   }
 
   public async getLists() {
@@ -114,6 +117,25 @@ class Unisender extends UnisenderBase {
   }
   public async getSenderDomainList(payload: GetSenderDomainList) {
     return this.messaging.getSenderDomainList(payload);
+  }
+
+  /* 
+    Statistics
+  */
+  public async getCampaignCommonStats(payload: CampaignInput) {
+    return this.stat.getCampaignCommonStats(payload);
+  }
+  public async getCampaignDeliveryStats(payload: GetCampaignDeliveryStats) {
+    return this.stat.getCampaignDeliveryStats(payload);
+  }
+  public async getCampaignStatus(payload: CampaignInput) {
+    return this.stat.getCampaignStatus(payload);
+  }
+  public async getMessages(payload: GetMessages) {
+    return this.stat.getMessages(payload);
+  }
+  public async getVisitedLinks(payload: GetVisitedLinks) {
+    return this.stat.getVisitedLinks(payload);
   }
 }
 

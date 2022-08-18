@@ -99,6 +99,11 @@ export type ExportContactsResponse = {
   status: string // "new"
 }
 
+export type AsyncTaskResult = {
+  task_uuid: string //  "ff719cf2-4ed9-11e9-8647-d663bd873d93",
+  status: string // "new"
+}
+
 export type GetTaskResult = {
   task_uuid: string
 }
