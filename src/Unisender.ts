@@ -9,6 +9,7 @@ import {
 } from "./DTO"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
+import UnisenderFields, { CreateFieldInput, UpdateFieldInput } from "./UnisenderFields"
 import UnisenderMessaging from "./UnisenderMessaging"
 import UnisenderStat, { CampaignInput, GetCampaignDeliveryStats, GetMessages, GetVisitedLinks } from "./UnisenderStat"
 
@@ -16,6 +17,7 @@ class Unisender extends UnisenderBase {
   private contacts: UnisenderContacts
   private messaging: UnisenderMessaging
   private stat: UnisenderStat
+  private fields: UnisenderFields
 
   constructor(options?: APIOptions) {
     super(options)
@@ -23,6 +25,7 @@ class Unisender extends UnisenderBase {
     this.contacts = new UnisenderContacts()
     this.messaging = new UnisenderMessaging()
     this.stat = new UnisenderStat()
+    this.fields = new UnisenderFields()
   }
 
   public async getLists() {
@@ -137,6 +140,22 @@ class Unisender extends UnisenderBase {
   public async getVisitedLinks(payload: GetVisitedLinks) {
     return this.stat.getVisitedLinks(payload);
   }
+
+  /* 
+    Fields
+  */
+    public async getFields() {
+      return this.fields.getFields();
+    }
+    public async createField(input: CreateFieldInput) {
+      return this.fields.createField(input);
+    }
+    public async updateField(input: UpdateFieldInput) {
+      return this.fields.updateField(input);
+    }
+    public async deleteField(id: number | string) {
+      return this.fields.deleteField(id);
+    }
 }
 
 export default Unisender
