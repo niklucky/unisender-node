@@ -69,8 +69,9 @@ export default class UnisenderContacts {
       overwrite_lists: payload.overwrite_lists,
       data: []
     }
+    console.log('[importContactsBatch] len', len);
     for (let i = 0; i < len; i++) {
-      if (i % 500 === 0) {
+      if (i > 0 && i % 500 === 0) {
         chunkPayload.data = chunk
         const result = await request<ImportContactsResponse>('importContacts', chunkPayload)
         results.push(result)
