@@ -9,7 +9,7 @@ import {
 } from "./DTO"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
-import UnisenderFields, { CreateFieldInput, UpdateFieldInput } from "./UnisenderFields"
+import UnisenderFields, { CreateFieldInput, GetContactFieldValuesInput, UpdateFieldInput } from "./UnisenderFields"
 import UnisenderMessaging from "./UnisenderMessaging"
 import UnisenderStat, { CampaignInput, GetCampaignDeliveryStats, GetMessages, GetVisitedLinks } from "./UnisenderStat"
 
@@ -144,18 +144,27 @@ class Unisender extends UnisenderBase {
   /* 
     Fields
   */
-    public async getFields() {
-      return this.fields.getFields();
-    }
-    public async createField(input: CreateFieldInput) {
-      return this.fields.createField(input);
-    }
-    public async updateField(input: UpdateFieldInput) {
-      return this.fields.updateField(input);
-    }
-    public async deleteField(id: number | string) {
-      return this.fields.deleteField(id);
-    }
+  public async getFields() {
+    return this.fields.getFields();
+  }
+  public async createField(input: CreateFieldInput) {
+    return this.fields.createField(input);
+  }
+  public async updateField(input: UpdateFieldInput) {
+    return this.fields.updateField(input);
+  }
+  public async deleteField(id: number | string) {
+    return this.fields.deleteField(id);
+  }
+  public async getTags() {
+    return this.fields.getTags();
+  }
+  public async deleteTag(id: number | string) {
+    return this.fields.deleteTag(id);
+  }
+  public async getContactFieldValues(input: GetContactFieldValuesInput) {
+    return this.fields.getContactFieldValues(input);
+  }
 }
 
 export default Unisender

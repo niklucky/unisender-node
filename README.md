@@ -144,8 +144,8 @@ const result = await sdk.importContacts({
 |--------|--------|
 | createField | ✅ |
 | deleteField | ✅ |
-| deleteTag | 🚧 |
+| deleteTag | ✅ |
 | getFields | ✅ |
-| getTags | 🚧 |
+| getTags | ✅ |
 | updateField | ✅ |
-| getContactFieldValues | 🚧 |
+| getContactFieldValues | ✅ |

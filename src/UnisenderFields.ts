@@ -1,7 +1,4 @@
-import * as qs from 'qs'
 import { request } from "./client";
-import { Contact, ContactCount, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, ExportContactsResponse, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, ImportContactsResponse, IsContactInLists, List, SubscribePayload, UpdateListPayload } from "./DTO";
-import { stringifyArray } from "./utils";
 
 export type FieldType =
   'string' | // - строка;
@@ -31,14 +28,27 @@ export type UpdateFieldInput = {
   public_name?: string //	Название поля. Если не использовать, то будет проведена автоматическая генерация по полю "name". 
 }
 
+export type Tag = {
+  id: number
+  name: string
+}
+
+export type GetContactFieldValuesInput = {
+  email: string // *	Валидный email адрес.
+  field_ids: (number | string)[] // *	Набор id доп. полей через запятую (напр. "1,2,3,4").  
+}
+
+export type FieldValues = {
+  fieldValues: Record<string, string>
+}
 export default class UnisenderFields {
   constructor() {
   }
   public async getFields() {
     return await request<Field[]>('getFields')
   }
-  public async createField(payload: CreateFieldInput) {
-    return await request<{ id: number }>('createField', payload)
+  public async createField(input: CreateFieldInput) {
+    return await request<{ id: number }>('createField', input)
   }
   public async updateField(payload: UpdateFieldInput) {
     return await request<void>('updateField', payload)
@@ -46,5 +56,13 @@ export default class UnisenderFields {
   public async deleteField(id: string | number) {
     return await request<void>('deleteField', { id })
   }
-
+  public async getTags() {
+    return await request<Tag[]>('getTags')
+  }
+  public async deleteTag(id: string | number) {
+    return await request<void>('deleteTag', { id })
+  }
+  public async getContactFieldValues(input: GetContactFieldValuesInput) {
+    return await request<FieldValues>('getContactFieldValues', input)
+  }
 }
