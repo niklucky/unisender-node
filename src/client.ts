@@ -1,5 +1,5 @@
-import * as https from 'https'
 import * as qs from 'qs'
+import axios from 'axios'
 
 import { APIOptions, UnisenderLang } from './DTO'
 
@@ -15,23 +15,12 @@ export type Response<T> = {
 let lang: UnisenderLang = 'en'
 let apiKey: string = ''
 
-const defaultOptions = {
-  host: 'api.unisender.com',
-  path: '',
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'Content-type: application/x-www-form-urlencoded'
-  }
-};
 
-function buildPath(method: string, data?: KeyValue): string {
-  let url = `/${lang}/api/${method}?format=json&api_key=${apiKey}`
-  if (data) {
-    url += '&' + qs.stringify(data)
-  }
-
-  return url
+function buildURL(method: string) {
+  return 'https://api.unisender.com' + buildPath(method)  
+}
+function buildPath(method: string): string {
+  return `/${lang}/api/${method}?api_key=${apiKey}`
 }
 
 function debug(...args: any[]) {
@@ -43,37 +32,15 @@ export function configureClient(options: APIOptions) {
   apiKey = options.apiKey
 }
 
-export async function request<T>(method: string, data?: KeyValue, headers?: KeyValue): Promise<Response<T>> {
-  return new Promise((resolve, reject) => {
-    const options: https.RequestOptions = {
-      ...defaultOptions,
-      path: buildPath(method, data),
-    }
-    console.log('data', data);
-    debug('options', options);
-    const req = https.request(options, (res) => {
-      debug('res.statusCode', res.statusCode);
-      if (res.statusCode !== 200) {
-        console.error(`Did not get a Created from the server. Code: ${res.statusCode}`);
-        res.resume();
-        return;
-      }
-
-      let data = '';
-
-      res.on('data', (chunk) => {
-        data += chunk;
-      });
-
-      res.on('close', () => {
-        resolve(JSON.parse(data))
-      });
-    });
-
-    req.end();
-
-    req.on('error', (err: Error) => {
-      reject(err)
-    });
-  })
+export async function request<T>(method: string, payload?: KeyValue, headers?: KeyValue): Promise<Response<T>> {
+  const options = {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded'
+    },
+    data: qs.stringify(payload),
+    url: buildURL(method),
+  };
+  const response = await axios(options);
+  return response.data
 }
