@@ -1,5 +1,11 @@
 # unisender-node
 
+## 0.0.7
+
+### Patch Changes
+
+- Moving Unisender to types
+
 ## 0.0.6
 
 ### Patch Changes

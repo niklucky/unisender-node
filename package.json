@@ -1,6 +1,6 @@
 {
   "name": "unisender-node",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Unisender SDK (TypeScript)",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -18,8 +18,9 @@
     "typescript": "^4.7.4"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts --clean",
-    "lint": "tsc"
+    "build": "tsc",
+    "v:add": "yarn changeset add",
+    "v": "yarn changeset version"
   },
   "dependencies": {
     "axios": "^0.27.2",
