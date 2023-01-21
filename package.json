@@ -1,11 +1,11 @@
 {
-  "name": "unisender-node-sdk",
-  "version": "0.0.2",
+  "name": "unisender-node",
+  "version": "0.0.3",
   "description": "Unisender SDK (TypeScript)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "readme": "https://github.com/niklucky/unisender-node-sdk#readme",
-  "repository": "git@github.com:niklucky/unisender-node-sdk.git",
+  "readme": "https://github.com/niklucky/unisender-node#readme",
+  "repository": "git@github.com:niklucky/unisender-node.git",
   "author": "Nik <iam@niklucky.com>",
   "license": "MIT",
   "private": false,
@@ -17,6 +17,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "qs": "^6.11.0"
   }
 }

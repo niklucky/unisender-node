@@ -12,19 +12,19 @@
 ### Installation
 
 ```bash
-yarn add unisender-node-sdk
+yarn add unisender-node
 ```
 
 or
 
 ```bash
-node i unisender-node-sdk
+npm i unisender-node
 ```
 
 ### Basic usage
 
 ```javascript
-import Unisender from 'unisender-node-sdk'
+import Unisender from 'unisender-node'
 
 
 const sdk = new Unisender({ apiKey: 'my-secret-key', lang: 'en' })
@@ -46,7 +46,7 @@ SDK will check for these ENV variables:
 If you provide these variables, you don't need to provide in constructor.
 
 ```javascript
-import Unisender from 'unisender-node-sdk'
+import Unisender from 'unisender-node'
 
 const sdk = new Unisender()
 ```

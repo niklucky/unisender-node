@@ -1,5 +1,5 @@
-import * as qs from 'qs'
 import axios from 'axios'
+import * as qs from 'qs'
 
 import { APIOptions, UnisenderLang } from './DTO'
 
@@ -17,7 +17,7 @@ let apiKey: string = ''
 
 
 function buildURL(method: string) {
-  return 'https://api.unisender.com' + buildPath(method)  
+  return 'https://api.unisender.com' + buildPath(method)
 }
 function buildPath(method: string): string {
   return `/${lang}/api/${method}?api_key=${apiKey}`
