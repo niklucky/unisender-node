@@ -1,5 +1,5 @@
 import { request } from "./client";
-import { CancelCampaign, CheckEmail, CheckEmailResult, CheckSms, CheckSmsResult, CreateCampaign, CreateCampaignResult, CreateEmailMessage, CreateSmsMessage, DeleteMessage, GetActualMessageVersion, GetSenderDomainList, GetSenderDomainListResult, GetWebVersion, GetWebVersionResult, SendEmail, SendSms, SendSmsResult, SendTestEmail, UpdateEmailMessage, UpdateOptInEmail } from "./DTO";
+import { CancelCampaign, CheckEmail, CheckEmailResult, CheckSms, CheckSmsResult, CreateCampaign, CreateCampaignResult, CreateEmailMessage, CreateSmsMessage, DeleteMessage, GetActualMessageVersion, GetSenderDomainList, GetSenderDomainListResult, GetWebVersion, GetWebVersionResult, SendEmail, SendSms, SendSmsResult, SendTestEmail, UpdateEmailMessage, UpdateOptInEmail } from "./types";
 import { stringifyArray } from "./utils";
 
 export default class UnisenderMessaging {

@@ -1,5 +1,5 @@
 import { request } from "./client";
-import { AsyncTaskResult } from "./DTO";
+import { AsyncTaskResult } from "./types";
 
 export type CampaignInput = {
   campaign_id: number

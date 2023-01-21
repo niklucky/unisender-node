@@ -1,12 +1,8 @@
 import {
-  APIOptions, CreateEmailMessage, CreateListPayload, DeleteMessage, DeleteListPayload, ExcludePayload,
-  ExportContacts, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts,
-  IsContactInLists, SubscribePayload, UpdateEmailMessage, UpdateListPayload, GetActualMessageVersion,
-  SendTestEmail, SendEmail, CheckEmail, CreateSmsMessage, SendSms, CheckSms, CreateCampaign, CancelCampaign,
-  GetWebVersion,
-  UpdateOptInEmail,
-  GetSenderDomainList
-} from "./DTO"
+  APIOptions, CancelCampaign, CheckEmail, CheckSms, CreateCampaign, CreateEmailMessage, CreateListPayload, CreateSmsMessage, DeleteListPayload, DeleteMessage, ExcludePayload,
+  ExportContacts, GetActualMessageVersion, GetContact, GetContactCount, GetSenderDomainList, GetTaskResult, GetTotalContactsCount, GetWebVersion, ImportContacts,
+  IsContactInLists, SendEmail, SendSms, SendTestEmail, SubscribePayload, UpdateEmailMessage, UpdateListPayload, UpdateOptInEmail
+} from "./types"
 import UnisenderBase from "./UnisenderBase"
 import UnisenderContacts from "./UnisenderContacts"
 import UnisenderFields, { CreateFieldInput, GetContactFieldValuesInput, UpdateFieldInput } from "./UnisenderFields"

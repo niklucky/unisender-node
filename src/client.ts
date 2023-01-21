@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as qs from 'qs'
 
-import { APIOptions, UnisenderLang } from './DTO'
+import { APIOptions, UnisenderLang } from './types'
 
 export type KeyValue = Record<string, any>
 export type Response<T> = {

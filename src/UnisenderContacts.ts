@@ -1,6 +1,5 @@
-import * as qs from 'qs'
 import { request } from "./client";
-import { Contact, ContactCount, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, ExportContactsResponse, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, ImportContactsResponse, IsContactInLists, List, SubscribePayload, UpdateListPayload } from "./DTO";
+import { Contact, ContactCount, CreateListPayload, DeleteListPayload, ExcludePayload, ExportContacts, ExportContactsResponse, GetContact, GetContactCount, GetTaskResult, GetTotalContactsCount, ImportContacts, ImportContactsResponse, IsContactInLists, List, SubscribePayload, UpdateListPayload } from "./types";
 import { stringifyArray } from "./utils";
 
 export default class UnisenderContacts {
@@ -83,7 +82,7 @@ export default class UnisenderContacts {
     const result = await request<ImportContactsResponse>('importContacts', chunkPayload)
     results.push(result)
 
-    return results 
+    return results
   }
   public async exportContacts(payload: ExportContacts) {
     return await request<ExportContactsResponse>('async/exportContacts', payload)
