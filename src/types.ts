@@ -1,5 +1,4 @@
 import { KeyValue } from "./client"
-import Unisender from "./Unisender"
 
 export type UnisenderLang = 'ru' | 'en' | 'ua'
 
@@ -410,4 +409,3 @@ export type GetSenderDomainListResult = {
   }[]
 }
 
-export default Unisender

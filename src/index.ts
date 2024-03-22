@@ -1,3 +1,2 @@
-import Unisender from './Unisender'
-
-export default Unisender
+export { Unisender } from './Unisender'
+export * from './types'

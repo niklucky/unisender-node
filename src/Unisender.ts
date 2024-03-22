@@ -9,7 +9,7 @@ import UnisenderFields, { CreateFieldInput, GetContactFieldValuesInput, UpdateFi
 import UnisenderMessaging from "./UnisenderMessaging"
 import UnisenderStat, { CampaignInput, GetCampaignDeliveryStats, GetMessages, GetVisitedLinks } from "./UnisenderStat"
 
-class Unisender extends UnisenderBase {
+export class Unisender extends UnisenderBase {
   private contacts: UnisenderContacts
   private messaging: UnisenderMessaging
   private stat: UnisenderStat
@@ -162,5 +162,3 @@ class Unisender extends UnisenderBase {
     return this.fields.getContactFieldValues(input);
   }
 }
-
-export default Unisender
